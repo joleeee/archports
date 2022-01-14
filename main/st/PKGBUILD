@@ -1,0 +1,37 @@
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Maintainer: Sebastian J. Bronner <waschtl@sbronner.com>
+# Contributor: Patrick Jackson <PatrickSJackson gmail com>
+# Contributor: Christoph Vigano <mail@cvigano.de>
+
+pkgname=st
+pkgver=0.8.4
+pkgrel=1
+pkgdesc='A simple virtual terminal emulator for X.'
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+license=('MIT')
+depends=(libxft)
+url=https://st.suckless.org
+source=(https://git.jole.xyz/$pkgname/snapshot/$pkgname-$pkgver.tar.bz2)
+sha256sums=('1141abcdaeb3376899efcde6e67a9910aaf9813046097ef049f43d3014d5f013')
+_sourcedir=$pkgname-$pkgver
+_makeopts="--directory=$_sourcedir"
+
+prepare() {
+	cd $_sourcedir
+	sed -i '/tic/d' Makefile
+}
+
+build() {
+	cd $_sourcedir
+	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+}
+
+package() {
+	local installopts='--mode 0644 -D --target-directory'
+	local shrdir="$pkgdir/usr/share"
+	local licdir="$shrdir/licenses/$pkgname"
+	local docdir="$shrdir/doc/$pkgname"
+	make $_makeopts PREFIX=/usr DESTDIR="$pkgdir" install
+	install $installopts "$licdir" "$_sourcedir/LICENSE"
+	install $installopts "$docdir" "$_sourcedir/README"
+}
