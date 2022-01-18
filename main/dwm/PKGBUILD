@@ -4,20 +4,22 @@
 
 pkgname=dwm
 pkgver=6.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic window manager for X"
 url="https://dwm.suckless.org"
 arch=('i686' 'x86_64')
 license=('MIT')
 options=(zipman)
 depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'st' 'dmenu')
-source=(https://git.jole.xyz/$pkgname/snapshot/$pkgname-$pkgver.tar.bz2)
-sha256sums=('fd34b03a1ea0548aae59bb078e25f3df42fba6e4f1073e907b4a3e18088c7bd9')
+_commit="0edcd639096dff69a2041bc50fef9fc3a8948e4c"
+_path="$pkgname-$_commit"
+source=(https://git.jole.xyz/$pkgname/snapshot/$_path.tar.bz2)
+sha256sums=('4ace549839d02e941f458ef25b39a9009d4edded390028fbb231730910d4846d')
 
 build() {
-	make -C "$srcdir/$pkgname-$pkgver" X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
+	make -C "$srcdir/$_path" X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 
 package() {
-	make -C "$srcdir/$pkgname-$pkgver" PREFIX=/usr DESTDIR="$pkgdir" install
+	make -C "$srcdir/$_path" PREFIX=/usr DESTDIR="$pkgdir" install
 }
