@@ -1,7 +1,7 @@
-pkgname=swaplayout
+pkgname=swithlayout
 pkgver=0.1
 pkgrel=1
-pkgdesc='swap tty keys'
+pkgdesc='switch tty keys'
 arch=('x86_64' 'aarch64')
 depends=(kbd)
 _commit="71ead2c295eb3e59a8776183d766f1ea9fe05547"
