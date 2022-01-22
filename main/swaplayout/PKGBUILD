@@ -1,0 +1,21 @@
+pkgname=swaplayout
+pkgver=0.1
+pkgrel=1
+pkgdesc='swap tty keys'
+arch=('x86_64' 'aarch64')
+depends=(kbd)
+_commit="71ead2c295eb3e59a8776183d766f1ea9fe05547"
+source=(https://git.jole.xyz/nous/snapshot/nous-$_commit.tar.bz2)
+sha256sums=('ffc2a4b2b66762cd7ef9752e94dc8a1fad86a0834ae39bf1c3615c464aecb172')
+_sourcedir="nous-$_commit"
+
+build() {
+	cd $_sourcedir
+	gzip -k switch.map
+}
+
+package() {
+	local mapdir="/usr/share/kbd/keymaps/custom"
+	mkdir -p "$pkgdir/$mapdir"
+	cp "$_sourcedir/switch.map.gz" "$pkgdir/$mapdir"
+}
