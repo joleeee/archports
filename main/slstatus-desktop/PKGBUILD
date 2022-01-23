@@ -1,0 +1,19 @@
+pkgname=slstatus-desktop
+pkgver=0.1
+pkgrel=1
+pkgdesc="jole's build of slstatus for desktop"
+arch=('x86_64' 'aarch64')
+provides=('slstatus')
+depends=(dwm)
+_commit="a321cd96d43427c8597d922d256dc01bba06c6d8"
+_path="slstatus-$_commit"
+source=(https://git.jole.xyz/slstatus/snapshot/$_path.tar.bz2)
+sha256sums=('1b3bb42530861b1909e10cce86d900085ca6333efa2c77d7f6cadb80387d6a5e')
+
+build() {
+	make -C "$srcdir/$_path" X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+}
+
+package() {
+	make -C "$srcdir/$_path" PREFIX=/usr DESTDIR="$pkgdir" install
+}
