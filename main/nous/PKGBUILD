@@ -1,0 +1,17 @@
+pkgname=nous
+pkgver=0.1
+pkgrel=1
+pkgdesc='nous keyboard layout'
+arch=('x86_64' 'aarch64')
+depends=(xkeyboard-config)
+_commit="71ead2c295eb3e59a8776183d766f1ea9fe05547"
+source=(https://git.jole.xyz/nous/snapshot/$pkgname-$_commit.tar.bz2)
+sha256sums=('ffc2a4b2b66762cd7ef9752e94dc8a1fad86a0834ae39bf1c3615c464aecb172')
+_sourcedir="$pkgname-$_commit"
+
+package() {
+	local symbols="/usr/share/X11/xkb/symbols"
+	local target="$pkgdir/$symbols"
+	mkdir -p "$target"
+	cp "$_sourcedir/nous" "$target"
+}
