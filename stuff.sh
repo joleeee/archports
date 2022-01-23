@@ -1,5 +1,6 @@
 #!/bin/sh
   file="$1"
+   sig="$file.sig"
    dir="$(dirname "$file")"
   root="$(basename $(readlink -f "$dir"/../..))"
   repo="$(basename $(readlink -f "$dir"/..))"
@@ -22,7 +23,7 @@ rsync "root@sluga:/$webdir/$db" "$ldb" || ( echo error retreiving db - make a ne
 repo-add "$ldb" "$file"
 
 #          hack to make the parent dirs
-rsync -v --rsync-path="mkdir -p $webdir && rsync" "$file" "$ldb" root@sluga:/"$webdir"
+rsync -v --rsync-path="mkdir -p $webdir && rsync" "$file" "$sig" "$ldb" root@sluga:/"$webdir"
 echo uploading $file to $webdir
 
 rm $ldb
