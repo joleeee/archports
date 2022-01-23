@@ -1,0 +1,19 @@
+pkgname=slstatus-laptop
+pkgver=0.1
+pkgrel=1
+pkgdesc="jole's build of slstatus for laptop"
+arch=('x86_64' 'aarch64')
+provides=('slstatus')
+depends=(dwm)
+_commit="ea65615e1e4779ebef626bc55043dbeed59be507"
+_path="slstatus-$_commit"
+source=(https://git.jole.xyz/slstatus/snapshot/$_path.tar.bz2)
+sha256sums=('bba57c9c4bc04a8a6bf97aa3327881305b3b97719afa56463783b2afb3b3aded')
+
+build() {
+	make -C "$srcdir/$_path" X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+}
+
+package() {
+	make -C "$srcdir/$_path" PREFIX=/usr DESTDIR="$pkgdir" install
+}
