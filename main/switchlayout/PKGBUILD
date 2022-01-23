@@ -1,4 +1,4 @@
-pkgname=swithlayout
+pkgname=switchlayout
 pkgver=0.1
 pkgrel=1
 pkgdesc='switch tty keys'
