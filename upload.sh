@@ -24,6 +24,5 @@ repo-add "$ldb" "$file"
 
 #          hack to make the parent dirs
 rsync -v --rsync-path="mkdir -p $webdir && rsync" "$file" "$sig" "$ldb" root@sluga:/"$webdir"
-echo uploading $file to $webdir
 
 rm $ldb
