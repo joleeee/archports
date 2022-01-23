@@ -1,6 +1,6 @@
 pkgname=dosudoasdoas
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="sudo shimmer for doas"
 arch=('x86_64' 'aarch64')
 provides=(sudo)
