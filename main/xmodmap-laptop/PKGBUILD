@@ -1,0 +1,16 @@
+pkgname=xmodmap-laptop-conf
+pkgver=0.1
+pkgrel=1
+pkgdesc='xmodmap laptop config'
+arch=('x86_64' 'aarch64')
+depends=(nous)
+provides=(xmodmap-conf)
+source=(Xmodmap)
+sha256sums=('7a1e2379065fcaa6098bc963c72f9ece27079b288832f294368acf1a94411235')
+
+package() {
+	local confd="/etc/X11"
+	local target="$pkgdir/$confd"
+	mkdir -p "$target"
+	cp "Xmodmap" "$target"
+}
