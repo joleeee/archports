@@ -1,0 +1,18 @@
+svname=dwm
+pkgname=$svname-s6
+pkgver=0.1
+pkgrel=1
+pkgdesc="$svname s6 service"
+arch=('x86_64' 'aarch64')
+depends=($svname)
+_commit="303dfcbb37877a28cbcb9aa79a7c4903705b05cb"
+_path="s6-services-$_commit"
+source=(https://git.jole.xyz/s6-services/snapshot/$_path.tar.bz2)
+sha256sums=('3c4bae7c6c066c703a8a336324eee9501198c0505e8948e0797649f1c1d5020f')
+
+package() {
+	cd "$srcdir/$_path/sv"
+	local target="$pkgdir/etc/s6/sv"
+	mkdir -p "$target"
+	cp -r "$svname" "$target"
+}
