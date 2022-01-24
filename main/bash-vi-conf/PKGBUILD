@@ -1,0 +1,14 @@
+pkgname=bash-vi-conf
+pkgver=0.1
+pkgrel=1
+pkgdesc='set -o vi and set EDITOR=nvim'
+arch=('x86_64' 'aarch64')
+depends=(bash)
+source=(vi-conf.bashrc)
+sha256sums=('b7b54adb9bd261078ed666b5a208af612cbdee25147bf20051d1f0a20a6d729b')
+
+package() {
+	local target="$pkgdir/etc/bash/bashrc.d"
+	mkdir -p "$target"
+	cp "$srcdir/vi-conf.bashrc" "$target"
+}
