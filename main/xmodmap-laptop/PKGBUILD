@@ -6,11 +6,10 @@ arch=('x86_64' 'aarch64')
 depends=(nous)
 provides=(xmodmap-conf)
 source=(Xmodmap)
-sha256sums=('7a1e2379065fcaa6098bc963c72f9ece27079b288832f294368acf1a94411235')
+sha256sums=('1797e56e7218bd28125cc3435223fc5569bf4ea8dabc3946bb2f2200bc8dad0c')
 
 package() {
-	local confd="/etc/X11"
-	local target="$pkgdir/$confd"
+	local target="$pkgdir/etc/X11"
 	mkdir -p "$target"
 	cp "Xmodmap" "$target"
 }

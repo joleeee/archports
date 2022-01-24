@@ -1,15 +1,13 @@
-!swap tab and escape
-!why clear Lock tho...
 clear Lock
 keycode 9 = Tab
-keycode 23 = Escape Tab Tab Tab
+keycode 23 = Escape
 
 clear control
 keycode 66 = Control_L
 add control = Control_L
 
-remove mod1 = Alt_L
-remove mod4 = Super_L
+clear mod1
+clear mod4
 keycode 133 = Alt_L
 keycode 64 = Super_L
 add mod1 = Alt_L
