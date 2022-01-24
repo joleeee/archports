@@ -1,0 +1,15 @@
+pkgname=nous-conf
+pkgver=0.1
+pkgrel=1
+pkgdesc='nous keyboard layout config'
+arch=('x86_64' 'aarch64')
+depends=(nous)
+source=(00-keyboard.conf)
+sha256sums=('c6d6a2d2ac412edd0a52c376a063cacf0a5e9abc203345d53c5fffca53eb0681')
+
+package() {
+	local confd="/etc/X11/xorg.conf.d"
+	local target="$pkgdir/$confd"
+	mkdir -p "$target"
+	cp "00-keyboard.conf" "$target"
+}
