@@ -1,10 +1,10 @@
 svname=xmodmap
 pkgname=$svname-s6
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="$svname s6 service"
 arch=('x86_64' 'aarch64')
-depends=($svname $svname-conf)
+depends=(xorg-$svname $svname-conf)
 _commit="303dfcbb37877a28cbcb9aa79a7c4903705b05cb"
 _path="s6-services-$_commit"
 source=(https://git.jole.xyz/s6-services/snapshot/$_path.tar.bz2)
