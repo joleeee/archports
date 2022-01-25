@@ -1,0 +1,14 @@
+pkgname=bash-editor-nvim-conf
+pkgver=0.1
+pkgrel=1
+pkgdesc='set EDITOR to nvim'
+arch=('x86_64' 'aarch64')
+depends=(bash neovim)
+source=(editor-nvim-conf.bashrc)
+sha256sums=('5991eb43a79f7566bf063cd3230f6a7632a5f896e71803b7cc8715fd82d84c52')
+
+package() {
+	local target="$pkgdir/etc/bash/bashrc.d"
+	mkdir -p "$target"
+	cp "$srcdir/editor-nvim-conf.bashrc" "$target"
+}
