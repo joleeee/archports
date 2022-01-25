@@ -1,14 +1,14 @@
 svname=dwm
 pkgname=$svname-s6
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="$svname s6 service"
 arch=('x86_64' 'aarch64')
 depends=($svname)
-_commit="303dfcbb37877a28cbcb9aa79a7c4903705b05cb"
+_commit="e0f4161d6f7610c61bc50600c91566f50f95e24c"
 _path="s6-services-$_commit"
 source=(https://git.jole.xyz/s6-services/snapshot/$_path.tar.bz2)
-sha256sums=('3c4bae7c6c066c703a8a336324eee9501198c0505e8948e0797649f1c1d5020f')
+sha256sums=('cbf11a145fb645b51ac5e4a5512a451aeb096a098207ff8d31e2607154428e9f')
 
 package() {
 	cd "$srcdir/$_path/sv"
