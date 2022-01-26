@@ -1,0 +1,14 @@
+pkgname=mouse-accel-conf
+pkgver=0.1
+pkgrel=1
+pkgdesc='disable mouse accel config'
+arch=('x86_64' 'aarch64')
+source=(50-mouse.conf)
+sha256sums=('a4a6549a55758f363a836b60a256404a708ae33940106e1d8d4862a05794436d')
+
+package() {
+	local confd="/etc/X11/xorg.conf.d"
+	local target="$pkgdir/$confd"
+	mkdir -p "$target"
+	cp "50-mouse.conf" "$target"
+}
