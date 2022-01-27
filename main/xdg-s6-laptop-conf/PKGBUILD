@@ -1,0 +1,14 @@
+pkgname=xdg-s6-laptop-conf
+pkgver=0.1
+pkgrel=1
+pkgdesc='xdg-s6 service laptop config'
+arch=('x86_64' 'aarch64')
+provides=(xdg-s6-conf)
+source=(xdg.conf)
+sha256sums=('cba5cacaeaa09362660715ddb378c6ffbea4f5e77643d683425ecdd1fca33e3c')
+
+package() {
+	local target="$pkgdir/etc/s6/config"
+	mkdir -p "$target"
+	cp "xdg.conf" "$target"
+}
