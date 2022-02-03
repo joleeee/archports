@@ -1,18 +1,18 @@
 svname=slstatus
 pkgname=$svname-s6
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc="$svname s6 service"
+pkgdesc="$svname s6 user service"
 arch=('x86_64' 'aarch64')
 depends=($svname)
-_commit="5596f5920d7bc5f6dbdb455f4a1718954359980a"
+_commit="92e106c10d062e76a3a653d6780defbdb727b271"
 _path="s6-services-$_commit"
 source=(https://git.jole.xyz/s6-services/snapshot/$_path.tar.bz2)
-sha256sums=('1da67ffb342f1edfa5f87aef14c4dd47cb0483c90a8f5c96ed2631bb71d03ae8')
+sha256sums=('c39ef465a3b1a7850301dcb4c9230f83db797b89818beaa3ffa97d8c2c250201')
 
 package() {
-	cd "$srcdir/$_path/sv"
-	local target="$pkgdir/etc/s6/sv"
+	cd "$srcdir/$_path/sv/user"
+	local target="$pkgdir/etc/s6/usersv"
 	mkdir -p "$target"
 	cp -r "$svname" "$target"
 }
