@@ -1,0 +1,18 @@
+svname=sxhkd
+pkgname=$svname-s6
+pkgver=0.1
+pkgrel=1
+pkgdesc="$svname s6 user service"
+arch=('x86_64' 'aarch64')
+depends=($svname)
+_commit="8ef44227b9b7c7a722410922b164747a1aed934d"
+_path="s6-services-$_commit"
+source=(https://git.jole.xyz/s6-services/snapshot/$_path.tar.bz2)
+sha256sums=('b67e21bf27040c797b0610683c360e733864547be1eced8848e54e988ee393b1')
+
+package() {
+	cd "$srcdir/$_path/sv/user"
+	local target="$pkgdir/etc/s6/usersv"
+	mkdir -p "$target"
+	cp -r "$svname" "$target"
+}
