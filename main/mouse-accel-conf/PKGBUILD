@@ -10,5 +10,5 @@ package() {
 	local confd="/etc/X11/xorg.conf.d"
 	local target="$pkgdir/$confd"
 	mkdir -p "$target"
-	cp "50-mouse.conf" "$target"
+	install -m0744 "50-mouse.conf" "$target"
 }
