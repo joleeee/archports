@@ -1,0 +1,20 @@
+svname=pipewire
+pkgname=$svname-s6
+pkgver=0.1
+pkgrel=1
+pkgdesc="$svname{,-pulse,-media,session} s6 user services"
+arch=('x86_64' 'aarch64')
+depends=($svname)
+_commit="021192cb85e4a7db97d1db219e64446f5bf1ee35"
+_path="s6-services-$_commit"
+source=(https://git.jole.xyz/s6-services/snapshot/$_path.tar.bz2)
+sha256sums=('0687cb311125477a3e74da74762fc7848cb5330835d8356cf375a71a4b5dc355')
+
+package() {
+	cd "$srcdir/$_path/sv/user"
+	local target="$pkgdir/etc/s6/usersv"
+	mkdir -p "$target"
+	cp -r "$svname" "$target"
+	cp -r "$svname-pulse" "$target"
+	cp -r "$svname-media-session" "$target"
+}
