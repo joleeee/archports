@@ -1,0 +1,14 @@
+pkgname=touchpad-palm-conf
+pkgver=0.1
+pkgrel=1
+pkgdesc='disable palm check'
+arch=('x86_64' 'aarch64')
+source=(50-touchpad-palm.conf)
+sha256sums=('SKIP')
+
+package() {
+	local confd="/etc/X11/xorg.conf.d"
+	local target="$pkgdir/$confd"
+	mkdir -p "$target"
+	install -m0644 "50-touchpad-palm.conf" "$target"
+}
